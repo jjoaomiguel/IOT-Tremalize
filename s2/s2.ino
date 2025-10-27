@@ -32,7 +32,7 @@ void setup()  {
   Serial.println("Conectando ao Broker");
   mqtt.setServer(URL.c_str(),PORT);
   while(!mqtt.connected()){
-    String ID = "S2_";
+    String ID = "s2_";
     ID += String(random(0xffff),HEX); //cria a parte aleat.
     mqtt.connect(ID.c_str(),USR.c_str(),broker_PASS.c_str());
     Serial.print(".");
