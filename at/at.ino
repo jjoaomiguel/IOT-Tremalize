@@ -70,6 +70,7 @@ void callback(char* topic, byte* payload, unsigned int length){
   }
 }*/
 
+//variáveis
 #include <WiFi.h>
 #include <WiFiClientSecure.h>
 #include <PubSubClient.h>
@@ -91,6 +92,7 @@ const String MyTopic = "projeto/trem/velocidade";
 const String SSID = "FIESC_IOT_EDU";
 const String PASS = "8120gv08";
 
+//conectar ao wifi
 void setup() {
   Serial.begin(115200);
   Serial.print("Conectado ao Wi-Fi");
@@ -100,6 +102,7 @@ void setup() {
     Serial.print(".");
     delay(200);
   }
+  //conectar ao servidor
   Serial.print("\nConectado com sucesso!");
   Serial.print("Conectando ao broker");
   mqtt.setServer(URL.c_str(),PORT);
@@ -110,13 +113,15 @@ void setup() {
     Serial.print(".");
     delay(200);
   }
+  //saida
   pinMode(LED_VERDE, OUTPUT);
   pinMode(LED_VERMELHO, OUTPUT);
+  //topico do trem
   mqtt.subscribe(MyTopic.c_str());
   mqtt.setCallback(callback);
   Serial.println("\nConecxao com sucesso ao broker!");
 }
-
+//tópico do trem "le a variável identifica sinais"
 void loop() {
   if(Serial.available()>0){
     String mensagem = Serial.readStringUntil('\n');
@@ -126,6 +131,7 @@ void loop() {
   delay(50);
 
 }
+//função 
 
 void callback(char* topic, byte* payload, unsigned int length){
   String mensagem = "";
@@ -135,14 +141,19 @@ void callback(char* topic, byte* payload, unsigned int length){
   Serial.print("Recebido: ");
   Serial.println(mensagem);
   int val = mensagem.toInt();
-  if(val0 > 0){
+  //se for maior que zero acende
+  if(val > 0){
     digitalWrite(LED_VERDE, HIGH);
     digitalWrite(LED_VERMELHO, LOW);
+    //se for menor que zero acende vermelho
   }else if(val < 0){
     digitalWrite(LED_VERDE, LOW);
     digitalWrite(LED_VERMELHO, HIGH);
+    //se for igual a zero apaga
   }else{
     digitalWrite(LED_VERDE, LOW);
     digitalWrite(LED_VERMELHO, LOW);
   }
 }:
+
+
