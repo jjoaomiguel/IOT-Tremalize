@@ -29,10 +29,10 @@ const char* TOPIC_SUBSCRIBE_S2_1     = "Projeto/S2/Distancia1";
 const char* TOPIC_SUBSCRIBE_S2_2     = "Projeto/S2/Distancia2";
 const char* TOPIC_RECEIVE_S2_CONTROL = "Projeto/S3/Controle";
 
-const char* TOPIC_PUBLISH_OBJETO     = "Projeto/S3/Ultrassom3";
+const char* TOPIC_PUBLISH_OBJETO     = "Projeto/S3/Ultrassonico3";
 
 
-// ===== Função Ultrassom =====
+// ===== Função Ultrassonico =====
 long medirDistancia() {
   digitalWrite(TRIG, LOW);
   delayMicroseconds(3);
@@ -58,13 +58,13 @@ void callback(char* topic, byte* payload, unsigned int length) {
 
   String t = String(topic);
 
-  // --- Controle de LED vindo da S1 ---
+  // ===== Controle de LED vindo da S1 =====
   if (t == TOPICO_SUBSCRIBE_S1) {
     digitalWrite(PINO_LED, mensagem == "acender" ? HIGH : LOW);
     return;
   }
 
-  // --- Controle do Servo 3 (distância 1) ---
+  // ===== Controle do Servo 3 (distância 1) =====
   if (t == TOPIC_SUBSCRIBE_S2_1) {
     if (mensagem == "perto") servo3.write(90);
     else if (mensagem == "longe") servo3.write(45);
@@ -76,7 +76,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
     return;
   }
 
-  // --- Controle do Servo 4 (distância 2) ---
+  // ===== Controle do Servo 4 (distância 2) =====
   if (t == TOPIC_SUBSCRIBE_S2_2) {
     if (mensagem == "perto") servo4.write(90);
     else if (mensagem == "longe") servo4.write(45);
@@ -88,7 +88,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
     return;
   }
 
-  // --- Controle direto S2 -> S3 ---
+  // ===== Controle direto S2 -> S3 =====
   if (t == TOPIC_RECEIVE_S2_CONTROL) {
     Serial.println("Controle recebido: " + mensagem);
   }
