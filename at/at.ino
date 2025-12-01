@@ -78,8 +78,8 @@ void callback(char* topic, byte* payload, unsigned int length){
 WiFiClientSecure client;
 PubSubClient mqtt(client);
 
-#define LED_VERMELHO 23
-#define LED_VERDE 22
+#define LED_VERMELHO 19
+#define LED_VERDE 18
 
 
 const String URL = "824ad44343204d1b8cc1b3dc4f105a31.s1.eu.hivemq.cloud";
