@@ -14,9 +14,9 @@ const char* BROKER_USER = "Placa_2_Kamila";
 const char* BROKER_PASS = "Kamila12345678";
 
 #define TRIG1 12
-#define ECHO1 25
-#define TRIG2 18
-#define ECHO2 21
+#define ECHO1 13
+#define TRIG2 25
+#define ECHO2 26
 #define PINO_LED 4
 
 // CANAIS DE MENSAGEM
@@ -146,9 +146,9 @@ void loop() {
 
     // Mensagem de objeto próximo/longe
     if (dist1 < 10)
-      mqtt.publish(TOPICO_ENVIO_S3, "objeto_proximo");
+      mqtt.publish(TOPICO_ENVIO_S3, "perto");
     else
-      mqtt.publish(TOPICO_ENVIO_S3, "objeto_longe");
+      mqtt.publish(TOPICO_ENVIO_S3, "longe");
   } 
   else {
     Serial.println("Dist1: sem leitura");
@@ -161,9 +161,9 @@ void loop() {
 
     // Mensagem extra
     if (dist2 < 10)
-      mqtt.publish(TOPICO_ENVIO_S3, "objeto_proximo");
+      mqtt.publish(TOPICO_ENVIO_S3, "perto");
     else
-      mqtt.publish(TOPICO_ENVIO_S3, "objeto_longe");
+      mqtt.publish(TOPICO_ENVIO_S3, "longe");
   } 
   else {
     Serial.println("Dist2: sem leitura");
