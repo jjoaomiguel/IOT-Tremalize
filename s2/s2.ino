@@ -1,5 +1,3 @@
-//s2 - (2x ultrasonico,Led) 
-
 #include <WiFi.h>
 #include <WiFiClientSecure.h>
 #include <PubSubClient.h>
@@ -23,7 +21,7 @@ const char* BROKER_PASS = "Kamila12345678";
 const char* TOPICO_PUBLISH_1 = "Projeto/S2/Distancia1";  // Envia distância do sensor 1
 const char* TOPICO_PUBLISH_2 = "Projeto/S2/Distancia2";  // Envia distância do sensor 2
 const char* TOPICO_SUBSCRIBE = "S1/iluminacao";          // Recebe comando para acender/apagar LED
-const char* TOPICO_ENVIO_S3   = "Projeto/S3/Controle";   // Envia mensagens sobre objeto perto/longe
+const char* TOPICO_ENVIO_S3  = "Projeto/S3/Controle";   // Envia mensagens sobre objeto perto/longe
 
 // CLIENTES WI-FI E MQTT
 WiFiClientSecure espClient;
