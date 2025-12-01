@@ -1,5 +1,4 @@
 // S1 - Placa 1 (DHT, LDR, Ultrassônico, RGB)
-// Versão corrigida e comentada para iniciantes
 
 #include <WiFi.h>
 #include <WiFiClientSecure.h>
